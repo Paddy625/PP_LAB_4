@@ -1,0 +1,74 @@
+﻿@page
+@model PP_LAB_4.Pages.Currency.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.currency[0].record_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.currency[0].name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.currency[0].exchange)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.currency)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.record_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.exchange)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="currency.record_date" class="control-label"></label>
+                <input asp-for="currency.record_date" class="form-control" />
+                <span asp-validation-for="currency.record_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="currency.name" class="control-label"></label>
+                <input asp-for="currency.name" class="form-control" />
+                <span asp-validation-for="currency.name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="currency.exchange" class="control-label"></label>
+                <input asp-for="currency.exchange" class="form-control" />
+                <span asp-validation-for="currency.exchange" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
