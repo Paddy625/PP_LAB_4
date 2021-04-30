@@ -5,11 +5,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Kursy aktualnie dostępne w bazie</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="Create">Dodaj kurs ręcznie</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -43,32 +44,7 @@
         }
     </tbody>
 </table>
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="currency.record_date" class="control-label"></label>
-                <input asp-for="currency.record_date" class="form-control" />
-                <span asp-validation-for="currency.record_date" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="currency.name" class="control-label"></label>
-                <input asp-for="currency.name" class="form-control" />
-                <span asp-validation-for="currency.name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="currency.exchange" class="control-label"></label>
-                <input asp-for="currency.exchange" class="form-control" />
-                <span asp-validation-for="currency.exchange" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+<div>
+    <a asp-page="Check">Sprawdź kurs!</a>
+</div>

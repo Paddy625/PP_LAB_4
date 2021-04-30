@@ -10,11 +10,11 @@ using PP_LAB_4.Models;
 
 namespace PP_LAB_4.Pages.Currency
 {
-    public class DeleteModel : PageModel
+    public class deleteModel : PageModel
     {
         private readonly PP_LAB_4.Data.PP_LAB_4Context _context;
 
-        public DeleteModel(PP_LAB_4.Data.PP_LAB_4Context context)
+        public deleteModel(PP_LAB_4.Data.PP_LAB_4Context context)
         {
             _context = context;
         }

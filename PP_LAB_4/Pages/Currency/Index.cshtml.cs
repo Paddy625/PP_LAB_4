@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using PP_LAB_4.Data;
 using PP_LAB_4.Models;
-using Newtonsoft.Json;
-using System.Net.Http;
 
 namespace PP_LAB_4.Pages.Currency
 {
@@ -21,33 +19,11 @@ namespace PP_LAB_4.Pages.Currency
             _context = context;
         }
 
-        public currency currency { get;set; }
+        public IList<currency> currency { get;set; }
 
-        public IActionResult OnGet()
+        public async Task OnGetAsync()
         {
-            return Page();
-        }
-
-        public async Task load(string date)
-        {
-            string call = "https://openexchangerates.org/api/historical/" + date + ".json?app_id=81c1723f53a04465aca559053eaa515a";
-            HttpClient httpclient = new HttpClient();
-            string json = await httpclient.GetStringAsync(call);
-            currency cur = JsonConvert.DeserializeObject<currency>(json);
-        }
-
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
-        public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            _context.currency.Add(currency);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            currency = await _context.currency.ToListAsync();
         }
     }
 }

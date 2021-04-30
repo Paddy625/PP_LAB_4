@@ -14,8 +14,6 @@ namespace PP_LAB_4.Data
         {
         }
 
-        public DbSet<PP_LAB_4.Models.przykladowa_klasa> przykladowa_klasa { get; set; }
-
         public DbSet<PP_LAB_4.Models.currency> currency { get; set; }
     }
 }
